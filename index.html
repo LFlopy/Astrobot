@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Услуги астролога</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--tg-theme-bg-color, #1a1a2e);
+            color: var(--tg-theme-text-color, #ffffff);
+            padding: 16px;
+            min-height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 22px;
+            margin-bottom: 6px;
+            color: #c9a227;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(201,162,39,0.3);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 14px;
+            transition: transform 0.2s;
+        }
+
+        .card:active { transform: scale(0.98); }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffffff;
+            flex: 1;
+        }
+
+        .card-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: #c9a227;
+            white-space: nowrap;
+            margin-left: 10px;
+        }
+
+        .card-desc {
+            font-size: 13px;
+            color: #aaa;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-duration {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .btn-book {
+            background: linear-gradient(135deg, #c9a227, #e8c547);
+            color: #1a1a2e;
+            border: none;
+            border-radius: 10px;
+            padding: 8px 18px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-book:active { opacity: 0.8; }
+
+        .category-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #c9a227;
+            margin: 20px 0 10px;
+            padding-left: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>🔮 Услуги астролога</h1>
+<p class="subtitle">Выбери подходящую консультацию</p>
+
+<p class="category-label">✨ Разборы</p>
+
+<div class="card">
+    <div class="card-header">
+        <div class="card-title">Натальная карта</div>
+        <div class="card-price">2 000 ₽</div>
+    </div>
+    <div class="card-desc">Полный разбор натальной карты — характер, таланты, жизненный путь и ключевые события.</div>
+    <div class="card-footer">
+        <span class="card-duration">⏱ 60 минут</span>
+        <button class="btn-book" onclick="bookService('Натальная карта', 2000)">Записаться</button>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="card-title">Матрица судьбы</div>
+        <div class="card-price">3 500 ₽</div>
+    </div>
+    <div class="card-desc">Разбор матрицы судьбы — предназначение, кармические задачи, денежный канал и отношения.</div>
+    <div class="card-footer">
+        <span class="card-duration">⏱ 90 минут</span>
+        <button class="btn-book" onclick="bookService('Матрица судьбы', 3500)">Записаться</button>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="card-title">Синастрия</div>
+        <div class="card-price">4 000 ₽</div>
+    </div>
+    <div class="card-desc">Разбор совместимости двух людей — отношения, партнёрство, семья.</div>
+    <div class="card-footer">
+        <span class="card-duration">⏱ 90 минут</span>
+        <button class="btn-book" onclick="bookService('Синастрия', 4000)">Записаться</button>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="card-title">Прогноз на год</div>
+        <div class="card-price">5 000 ₽</div>
+    </div>
+    <div class="card-desc">Астрологический прогноз на текущий год — ключевые периоды, возможности и риски.</div>
+    <div class="card-footer">
+        <span class="card-duration">⏱ 120 минут</span>
+        <button class="btn-book" onclick="bookService('Прогноз на год', 5000)">Записаться</button>
+    </div>
+</div>
+
+<p class="category-label">🔐 Подписка</p>
+
+<div class="card">
+    <div class="card-header">
+        <div class="card-title">Закрытый канал</div>
+        <div class="card-price">990 ₽/мес</div>
+    </div>
+    <div class="card-desc">Еженедельные прогнозы, разборы астрособытий, ответы на вопросы в закрытом сообществе.</div>
+    <div class="card-footer">
+        <span class="card-duration">📅 30 дней</span>
+        <button class="btn-book" onclick="bookService('Закрытый канал', 990)">Подписаться</button>
+    </div>
+</div>
+
+<script>
+    const tg = window.Telegram.WebApp;
+    tg.ready();
+    tg.expand();
+
+    function bookService(name, price) {
+        tg.sendData(JSON.stringify({ action: 'book', service: name, price: price }));
+    }
+</script>
+
+</body>
+</html>
